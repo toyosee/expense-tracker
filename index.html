@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Expenses</title>
+
+    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="./assets/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Tracker</h1>
+        <div class="items">
+            <h3>Add A New Item</h3>
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="input1">Expenses</label>
+                    <input type="text" class="form-control" id="expenses" placeholder="Type of expenses">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="input2">Amount</label>
+                      <input type="number" class="form-control" id="amount" placeholder="Amount spent">
+                    </div>
+                  </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="input2">Date</label>
+                    <input type="date" class="form-control" id="date">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row justify-content-center">
+                <div class="col-md-4">
+                  <button id="update" type="button" class="btn btn-primary btn-block">Add Expenses</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="clear" type="button" class="btn btn-primary btn-block">Clear Table</button>
+                  </div>
+              </div>
+        </div>
+
+        <div>
+            <div class="table-responsive">
+              <table class="table table-bordered" id="expenseTable">
+                <thead>
+                  <tr>
+                    <th>Expenses</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="expenseTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+          
+    </div>
+
+
+    <script src="./assets/expenses.js" defer></script>
+</body>
+</html>
