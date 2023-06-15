@@ -24,6 +24,7 @@ function addExpense(){
     let amount = ExpAmount.value;
     let exDate = ExpDate.value;
 
+    // Creating an object of all input fields and pushing to array
     let newExpense = {expense: expense, amount: amount, date: exDate}
     expenses.push(newExpense)
     console.log(expenses)
