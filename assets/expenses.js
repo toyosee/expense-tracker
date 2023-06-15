@@ -1,3 +1,4 @@
+// Getting all DOM elements from HTML
 const Expenses = document.getElementById('expenses')
 const ExpAmount = document.getElementById('amount')
 const ExpDate = document.getElementById('date')
@@ -5,18 +6,20 @@ const Btn = document.getElementById('update')
 const clearBtn = document.getElementById('clear')
 const TblBody = document.getElementById('expenseTableBody')
 
-// Empty array to hold expenses
+// Declare Empty array to hold expenses
 let expenses = []
 
-// Get expenses from local storage
+// Get expenses from local storage location
+const itemsFromLocal = localStorage.getItem("expenses")
+const expensesFromLocalStorage = JSON.parse(itemsFromLocal)
 
-const expensesFromLocalStorage = JSON.parse(localStorage.getItem("expenses"));
+// Check if there are items in local storage then populate table
 if(expensesFromLocalStorage){
      expenses = expensesFromLocalStorage
      populate(expenses);
  }
 
-
+// function to get all input value from input field
 function addExpense(){
 
     // Getting value from input field
@@ -40,8 +43,10 @@ function addExpense(){
     populate(expenses);
 }
 
+// Function to populate the table with data
 function populate(update){
     let table = '';
+    //let t = ''
 
     for(let i = 0; i < update.length; i++){
         let expense = update[i]
@@ -52,6 +57,7 @@ function populate(update){
         <td> ${expense.date} </td>
         <td><i class="fas fa-trash-alt delete-icon" onclick="deleteExpense(${i})"></i></td>
         </tr>`
+        //console.log(t += expense.amount)
         
     }
     TblBody.innerHTML = table;
@@ -63,7 +69,6 @@ function deleteExpense(index) {
     let confirmation = `Are you sure you want to delete this item?
                         This action can not be reversed`
     const confirmDelete = window.confirm(confirmation);
-
     if(confirmDelete){
         expenses.splice(index, 1);
         localStorage.setItem('expenses', JSON.stringify(expenses));
@@ -78,6 +83,6 @@ function clear(){
     populate(expenses)
 }
 
-
+// Event listiners to handle add and delet button events
 Btn.addEventListener("click", addExpense);
 clearBtn.addEventListener("dblclick", clear)
