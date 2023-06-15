@@ -8,12 +8,14 @@
 
     <link rel="stylesheet" href="./assets/styles.css">
     <link rel="stylesheet" href="./assets/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>Expense Tracker</h1>
+    <div class="container central">
+        <h1 class="header">Expense Tracker</h1>
         <div class="items">
             <h3>Add A New Item</h3>
+            <div class="input-area">
             <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
@@ -38,8 +40,9 @@
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div class="row justify-content-center">
+              <div class="row justify-content-center for-btn">
                 <div class="col-md-4">
                   <button id="update" type="button" class="btn btn-primary btn-block">Add Expenses</button>
                 </div>
@@ -52,21 +55,26 @@
         <div>
             <div class="table-responsive">
               <table class="table table-bordered" id="expenseTable">
-                <thead>
+                <thead class="thead-dark">
                   <tr>
                     <th>Expenses</th>
                     <th>Amount</th>
                     <th>Date</th>
+                    <th>Delete</th>
                   </tr>
                 </thead>
-                <tbody id="expenseTableBody"></tbody>
+                <tbody id="expenseTableBody" class="table-striped"></tbody>
               </table>
             </div>
           </div>
-          
+
+          <div>
+            <canvas id="barChart"></canvas>
+          </div>         
     </div>
 
 
     <script src="./assets/expenses.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

@@ -1,0 +1,25 @@
+  .central{
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .header{
+    font-weight: bolder;
+    color: tomato;
+  }
+
+  .input-area{
+    padding: 20px 0;
+  }
+
+  .for-btn{
+    padding: 0 0 20px 0;
+  }
+ 
+  .delete-icon {
+    cursor: pointer;
+  }
+
+  .delete-icon:hover {
+    color: red;
+  }

@@ -6,8 +6,16 @@ const clearBtn = document.getElementById('clear')
 const TblBody = document.getElementById('expenseTableBody')
 
 // Empty array to hold expenses
-const expenses = []
-const approval = []
+let expenses = []
+
+// Get expenses from local storage
+
+const expensesFromLocalStorage = JSON.parse(localStorage.getItem("expenses"));
+if(expensesFromLocalStorage){
+     expenses = expensesFromLocalStorage
+     populate(expenses);
+ }
+
 
 function addExpense(){
 
@@ -25,6 +33,9 @@ function addExpense(){
     ExpAmount.value = ''
     ExpDate.value = ''
 
+    // convert expenses array to string using JSON.stringify() method
+    let expensesString = JSON.stringify(expenses);
+    localStorage.setItem("expenses", expensesString);
     populate(expenses);
 }
 
@@ -36,8 +47,9 @@ function populate(update){
 
         table += `<tr>
         <td> ${expense.expense} </td>
-        <td> ${expense.amount} </td>
+        <td> ₦${expense.amount} </td>
         <td> ${expense.date} </td>
+        <td><i class="fas fa-trash-alt delete-icon" onclick="deleteExpense(${i})"></i></td>
         </tr>`
         
     }
@@ -45,11 +57,26 @@ function populate(update){
 
 }
 
-// function clear(){
-//     expenses = []
-//     TblBody.innerHTML = ''
-// }
+// Clear Single table entry
+function deleteExpense(index) {
+    let confirmation = `Are you sure you want to delete this item?
+                        This action can not be reversed`
+    const confirmDelete = window.confirm(confirmation);
+
+    if(confirmDelete){
+        expenses.splice(index, 1);
+        localStorage.setItem('expenses', JSON.stringify(expenses));
+        populate(expenses);
+    }
+}
+
+// Clear entire local storage and table
+function clear(){
+    localStorage.clear();
+    expenses = []
+    populate(expenses)
+}
 
 
 Btn.addEventListener("click", addExpense);
-//clearBtn.addEventListener("dblclick", clear)
+clearBtn.addEventListener("dblclick", clear)
